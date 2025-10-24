@@ -52,9 +52,16 @@ An interactive chess game built with Python that combines traditional Minimax al
 
 ## 🎮 Demo
 
-### Screenshots of Gameplay
-![alt text](image.png)
+### A few screenshots of Gameplay
+<img width="2808" height="982" alt="image" src="https://github.com/user-attachments/assets/f0be98f4-3040-4417-94f2-5b545bdbdc8f" />
 
+<img width="2796" height="988" alt="image" src="https://github.com/user-attachments/assets/adef69b2-3b29-403a-a36c-ed448c716cd3" />
+
+<img width="2790" height="986" alt="image" src="https://github.com/user-attachments/assets/5577ea87-97fc-4ecf-8dcc-34f57835f73d" />
+
+<img width="2786" height="982" alt="image" src="https://github.com/user-attachments/assets/bb180220-9302-4e2d-9bca-db3509bb82a4" />
+
+<img width="2788" height="988" alt="image" src="https://github.com/user-attachments/assets/08260516-eadb-4a46-958f-2a1c42289d41" />
 
 ### Starting Position
 ```
