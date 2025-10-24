@@ -83,7 +83,7 @@ An interactive chess game built with Python that combines traditional Minimax al
 
 ### Step 1: Clone or Download
 ```bash
-git clone <repository-url>
+git clone https://github.com/davidgit3000/ChessGame-MiniMax-ML-based-Evaluation.git
 cd "Assignment 2"
 ```
 
