@@ -4,7 +4,6 @@ An interactive chess game built with Python that combines traditional Minimax al
 
 ![Chess Game Demo](https://img.shields.io/badge/Python-3.8+-blue.svg)
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
 
 ## 📋 Table of Contents
 
