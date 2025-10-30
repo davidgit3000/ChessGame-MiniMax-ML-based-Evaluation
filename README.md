@@ -8,19 +8,20 @@ An interactive chess game built with Python that combines traditional Minimax al
 
 ## 📋 Table of Contents
 
-- [Features](#features)
-- [Demo](#demo)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [How It Works](#how-it-works)
-- [Machine Learning Model](#machine-learning-model)
-- [Controls](#controls)
-- [Technical Details](#technical-details)
-- [Learning Resources](#learning-resources)
-- [Credits](#credits)
+- [Features](#✨-features)
+- [Demo](#🎮-demo)
+- [Installation](#🚀-installation)
+- [Usage](#📖-usage)
+- [Project Structure](#📁-project-structure)
+- [How It Works](#🧠-how-it-works)
+- [Machine Learning Model](#🤖-machine-learning-model)
+- [Controls](#🎯-controls)
+- [Technical Details](#🔧-technical-details)
+- [Learning Resources](#📚-learning-resources)
+- [Credits](#👨‍💻-credits)
 
 ## ✨ Features
+[↑ Back to Table of Contents](#📋-table-of-contents)
 
 ### Game Features
 - **Interactive Chess Board**: Click-to-move interface with visual feedback
@@ -68,6 +69,7 @@ An interactive chess game built with Python that combines traditional Minimax al
   - 🔴 Bright red for checkmate
 
 ## 🎮 Demo
+[↑ Back to Table of Contents](#📋-table-of-contents)
 
 ### A few screenshots of Gameplay
 <img width="2786" height="1058" alt="image" src="https://github.com/user-attachments/assets/a0a979e0-b6cf-4b36-b023-d410ddece8a8" />
@@ -118,6 +120,7 @@ AI: Qh4+ (Queen, d8→h4)
 ```
 
 ## 🚀 Installation
+[↑ Back to Table of Contents](#📋-table-of-contents)
 
 ### Prerequisites
 - Python 3.8 or higher
@@ -148,6 +151,7 @@ jupyter notebook Chess_Minimax_ML_Eval.ipynb
 ```
 
 ## 📖 Usage
+[↑ Back to Table of Contents](#📋-table-of-contents)
 
 ### Quick Start
 
@@ -183,6 +187,7 @@ jupyter notebook Chess_Minimax_ML_Eval.ipynb
 6. **Use board coordinates**: Files (a-h) and ranks (1-8) help identify squares
 
 ## 📁 Project Structure
+[↑ Back to Table of Contents](#📋-table-of-contents)
 
 ```
 Assignment 2/
@@ -203,6 +208,7 @@ Assignment 2/
 ```
 
 ## 🧠 How It Works
+[↑ Back to Table of Contents](#📋-table-of-contents)
 
 ### 1. Board Representation
 - Uses `python-chess` library for move generation and validation
@@ -274,6 +280,7 @@ def evaluate_board_ml(board: chess.Board) -> int:
 **Result**: Neural network provides accurate position evaluation for all positions!
 
 ## 🤖 Machine Learning Model
+[↑ Back to Table of Contents](#📋-table-of-contents)
 
 ### Dataset
 - **Source**: [Kaggle Chess Evaluations](https://www.kaggle.com/datasets/ronakbadhe/chess-evaluations)
@@ -331,6 +338,7 @@ def fen_to_board_array(fen):
 - **With Caching**: ~0.02ms per position (1000x faster!)
 
 ## 🎯 Controls
+[↑ Back to Table of Contents](#📋-table-of-contents)
 
 ### Button Controls
 - **Start / Reset**: Begin a new game
@@ -357,6 +365,7 @@ When a pawn reaches the opposite end:
 3. Click OK to confirm or Cancel to abort
 
 ## 🔧 Technical Details
+[↑ Back to Table of Contents](#📋-table-of-contents)
 
 ### Dependencies
 ```python
@@ -443,7 +452,6 @@ CASTLING_ROOK = '#ffa500' # Rook in castling (orange)
 
 This project is for educational purposes. 
 
-- Code: MIT License
 - Dataset: See [Kaggle Dataset License](https://www.kaggle.com/datasets/ronakbadhe/chess-evaluations)
 
 ---
