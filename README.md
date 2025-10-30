@@ -53,15 +53,17 @@ An interactive chess game built with Python that combines traditional Minimax al
 ## 🎮 Demo
 
 ### A few screenshots of Gameplay
-<img width="2808" height="982" alt="image" src="https://github.com/user-attachments/assets/f0be98f4-3040-4417-94f2-5b545bdbdc8f" />
+<img width="2786" height="1058" alt="image" src="https://github.com/user-attachments/assets/a0a979e0-b6cf-4b36-b023-d410ddece8a8" />
 
-<img width="2796" height="988" alt="image" src="https://github.com/user-attachments/assets/adef69b2-3b29-403a-a36c-ed448c716cd3" />
+<img width="2792" height="1052" alt="image" src="https://github.com/user-attachments/assets/b89ab5da-a977-493c-aad8-edf5c5519cc1" />
 
-<img width="2790" height="986" alt="image" src="https://github.com/user-attachments/assets/5577ea87-97fc-4ecf-8dcc-34f57835f73d" />
+<img width="2790" height="1048" alt="image" src="https://github.com/user-attachments/assets/d862c05b-9f5f-4b7b-aa60-c2239a5d1206" />
 
-<img width="2786" height="982" alt="image" src="https://github.com/user-attachments/assets/bb180220-9302-4e2d-9bca-db3509bb82a4" />
+<img width="2786" height="1048" alt="image" src="https://github.com/user-attachments/assets/e3b6d997-f001-44fd-91d6-6f8ca85647b2" />
 
-<img width="2788" height="988" alt="image" src="https://github.com/user-attachments/assets/08260516-eadb-4a46-958f-2a1c42289d41" />
+<img width="2786" height="1048" alt="image" src="https://github.com/user-attachments/assets/7cdb718e-640a-44f1-a3c8-f15498468658" />
+
+<img width="2792" height="1050" alt="image" src="https://github.com/user-attachments/assets/a06bf678-20ab-4774-99b1-ab397a90dd72" />
 
 ### Starting Position
 ```
