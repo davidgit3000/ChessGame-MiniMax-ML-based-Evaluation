@@ -17,7 +17,6 @@ An interactive chess game built with Python that combines traditional Minimax al
 - [Controls](#-controls)
 - [Technical Details](#-technical-details)
 - [Learning Resources](#-learning-resources)
-- [Credits](#-credits)
 
 ## ✨ Features
 [↑ Back to Table of Contents](#-table-of-contents)
