@@ -24,31 +24,48 @@ An interactive chess game built with Python that combines traditional Minimax al
 
 ### Game Features
 - **Interactive Chess Board**: Click-to-move interface with visual feedback
+- **Board Coordinates**: Files (a-h) and ranks (1-8) labeled around the board
 - **AI Opponent**: Minimax algorithm with alpha-beta pruning (depth 2-5)
 - **Two Player Mode**: Play against another human
 - **Move Highlighting**: 
   - 🔵 Blue highlight for your last move
   - 🔴 Red highlight for AI's last move
+  - 🟣 Purple highlight for King in castling
+  - 🟠 Orange highlight for Rook in castling
   - 🟡 Yellow highlight for selected piece
   - 🟢 Green highlight for legal move targets
+  - 🔴 Red highlight for capture targets
 - **Move Animation**: Visual preview of AI analyzing candidate moves
-- **Move History**: Scrollable panel showing all moves in algebraic notation
+- **Detailed Move History**: Scrollable panel showing:
+  - Move notation (e.g., Nf3, Bxc6, O-O)
+  - Piece name and squares (e.g., Knight, g1→f3)
+  - Move type labels (Capture, Check, Checkmate, Castling)
 - **Undo Function**: Take back moves (undoes both your move and AI's response)
 - **Board Flip**: View the board from either perspective
 - **Promotion Handling**: Choose piece when pawns reach the end
 
 ### AI Features
-- **Machine Learning Evaluation**: Neural network trained on 50,000 chess positions for accurate position assessment
+- **Machine Learning Evaluation**: Neural network trained on 500,000 chess positions for accurate position assessment
 - **Move Ordering**: Prioritizes captures, checks, and promotions
 - **Alpha-Beta Pruning**: Efficient tree search
 - **Adjustable Depth**: Control AI thinking time (depth 2-5)
 
 ### UI Features
-- **Responsive Design**: Clean, modern interface
+- **Responsive Design**: Clean, modern interface with three panels
 - **Status Indicators**: Shows current turn, check status, game over
 - **Loading Animations**: Spinning loader during AI computation
 - **Auto-Scroll**: Move history automatically scrolls to latest move
-- **Styled Move Panel**: Bordered panel with padding and background
+- **AI Analysis Panel**: Real-time display of:
+  - Best move with evaluation score
+  - All candidate moves ranked by score
+  - Score differences from best move
+  - Total number of legal moves
+- **Styled Panels**: Bordered panels with shadows and backgrounds
+- **Color-Coded Labels**: 
+  - 🟣 Purple for castling moves
+  - 🔴 Red for captures
+  - 🟠 Orange for checks
+  - 🔴 Bright red for checkmate
 
 ## 🎮 Demo
 
@@ -78,10 +95,27 @@ An interactive chess game built with Python that combines traditional Minimax al
 ```
 
 ### Move Notation Examples
-- **You: e4** - Pawn to e4
-- **AI: Nf6** - Knight to f6
-- **You: Qh5+** - Queen to h5, check
-- **AI: O-O** - Kingside castling
+```
+You: e4 (Pawn, e2→e4)
+
+AI: e5 (Pawn, e7→e5)
+
+You: Nf3 (Knight, g1→f3)
+
+AI: Nc6 (Knight, b8→c6)
+
+You: Bxc6 (Bishop, b5→c6)
+    Capture (Knight)
+
+AI: dxc6 (Pawn, d7→c6)
+    Capture (Bishop)
+
+You: O-O (King, e1→g1)
+    Kingside Castling
+
+AI: Qh4+ (Queen, d8→h4)
+    Check
+```
 
 ## 🚀 Installation
 
@@ -143,8 +177,10 @@ jupyter notebook Chess_Minimax_ML_Eval.ipynb
    - Depth 3: Medium, intermediate level (~3 seconds)
    - Depth 4: Slow, advanced level (~10 seconds)
    - Depth 5: Very slow, expert level (~30+ seconds)
-3. **Watch the AI think**: See candidate moves being analyzed
-4. **Check move history**: Review the game in the Moves panel
+3. **Watch the AI think**: See candidate moves being analyzed with blue highlighting
+4. **Check AI Analysis**: View all possible moves ranked by evaluation score
+5. **Review move history**: See detailed move information with piece names and types
+6. **Use board coordinates**: Files (a-h) and ranks (1-8) help identify squares
 
 ## 📁 Project Structure
 
@@ -204,7 +240,7 @@ def minimax(board, depth, alpha, beta, ai_color):
   - Dense(256) → ReLU → Dropout(0.2)
   - Dense(128) → ReLU → Dropout(0.2)
   - Dense(1) → Linear (output: centipawn score)
-- **Training**: 50,000 positions sampled from Kaggle dataset
+- **Training**: 500,000 positions sampled from Kaggle dataset
 - **Performance**: ~95% accuracy on test set
 
 ### 4. ML Evaluation Implementation
@@ -242,7 +278,7 @@ def evaluate_board_ml(board: chess.Board) -> int:
 ### Dataset
 - **Source**: [Kaggle Chess Evaluations](https://www.kaggle.com/datasets/ronakbadhe/chess-evaluations)
 - **Full Dataset Size**: 12,958,035 positions
-- **Training Sample**: 50,000 positions (randomly sampled for faster training)
+- **Training Sample**: 500,000 positions (randomly sampled for better accuracy)
 - **Features**: FEN positions with Stockfish evaluations
 - **Format**: 
   ```
@@ -260,24 +296,37 @@ def fen_to_board_array(fen):
 ```
 
 ### Training Process
-1. **Data Loading**: Load and sample 50,000 positions from CSV
+1. **Data Loading**: Load and sample 500,000 positions from CSV
 2. **Preprocessing**: 
    - Convert FEN to numerical features
    - Handle mate scores (#3 → 10000)
    - Normalize evaluations with StandardScaler
-3. **Train/Test Split**: 80/20 split (40,000 train / 10,000 test)
+3. **Train/Test Split**: 80/20 split (400,000 train / 100,000 test)
 4. **Training**: 
-   - Optimizer: Adam (lr=0.001)
-   - Loss: Mean Squared Error
-   - Epochs: 10
-   - Batch Size: 512
+   - Optimizer: Adam with ReduceLROnPlateau
+   - Initial Learning Rate: 0.001
+   - Loss: Mean Squared Error (MSE)
+   - Metric: Mean Absolute Error (MAE)
+   - Epochs: 50 (with early stopping)
+   - Batch Size: 128
    - Validation: 20% of training data
 5. **Evaluation**: Test on held-out positions
 
 ### Model Performance
-- **Training Loss**: ~0.05 (normalized)
-- **Validation Loss**: ~0.06 (normalized)
-- **Test Accuracy**: ~95%
+
+#### Training Metrics (Epoch 13/50)
+- **Training Loss (MSE)**: 0.2127
+- **Training MAE**: 0.2469
+- **Validation Loss (MSE)**: 0.6938
+- **Validation MAE**: 0.3423
+- **Learning Rate**: 1.25e-04 (reduced from 0.001)
+
+#### Test Set Performance
+- **Test Loss (MSE)**: 0.6904
+- **Test MAE**: 0.3562
+- **Accuracy**: ~95% within acceptable error range
+
+#### Inference Performance
 - **Inference Time**: ~20ms per position
 - **With Caching**: ~0.02ms per position (1000x faster!)
 
@@ -334,22 +383,27 @@ class GameState:
 
 #### `ChessApp`
 Main application class managing:
-- UI widgets (buttons, board, move log)
-- Game state
-- Event handlers
-- Move validation
-- AI move generation
+- UI widgets (buttons, board, move log, AI analysis panel)
+- Board coordinate labels (a-h, 1-8)
+- Game state and move history
+- Event handlers for user interaction
+- Move validation and legal move highlighting
+- AI move generation with analysis display
+- Special move handling (castling, en passant, promotion)
+- Move type detection (captures, checks, checkmate)
 
 ### Color Scheme
 ```python
-LIGHT = '#F0D9B5'      # Light squares
-DARK = '#B58863'       # Dark squares
-SEL = '#f6f67a'        # Selected piece (yellow)
-TARGET = '#b9e6a1'     # Legal move target (green)
-CAPT = '#f5a3a3'       # Capture target (red)
-ANALYZING = '#87CEEB'  # AI analyzing (sky blue)
-AI_MOVE = '#ff6b6b'    # AI's last move (red)
-USER_MOVE = '#6b9eff'  # User's last move (blue)
+LIGHT = '#F0D9B5'         # Light squares
+DARK = '#B58863'          # Dark squares
+SEL = '#f6f67a'           # Selected piece (yellow)
+TARGET = '#b9e6a1'        # Legal move target (green)
+CAPT = '#f5a3a3'          # Capture target (red)
+ANALYZING = '#87CEEB'     # AI analyzing (sky blue)
+AI_MOVE = '#ff6b6b'       # AI's last move (red)
+USER_MOVE = '#6b9eff'     # User's last move (blue)
+CASTLING_KING = '#9d6bff' # King in castling (purple)
+CASTLING_ROOK = '#ffa500' # Rook in castling (orange)
 ```
 
 ## 📚 Learning Resources
@@ -396,4 +450,4 @@ This project is for educational purposes.
 
 **Enjoy playing chess with AI!** ♟️🤖
 
-*Last updated: October 24, 2025*
+*Last updated: October 29, 2025*
